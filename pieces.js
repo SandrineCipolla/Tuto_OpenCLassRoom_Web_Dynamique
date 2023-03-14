@@ -3,10 +3,6 @@ const reponse = await fetch('pieces-autos.json');
 const pieces = await reponse.json();
 
 
-
-
-
-
 for (let i = 0; i < pieces.length; i++) {
 
     const article = pieces[i];
@@ -49,3 +45,39 @@ for (let i = 0; i < pieces.length; i++) {
     pieceElement.appendChild(descriptionElement);
     pieceElement.appendChild(disponibilitéElement);
     }
+
+     //gestion des boutons 
+    const boutonTrier = document.querySelector(".btn-trier");
+    boutonTrier.addEventListener("click", function () {
+        const piecesOrdonnees = Array.from(pieces);
+        piecesOrdonnees.sort(function (a, b) {
+            return a.prix - b.prix;
+        });
+        console.log(piecesOrdonnees);
+    });
+
+    const boutonFiltrer = document.querySelector(".btn-filtrer");
+    boutonFiltrer.addEventListener("click", function () {
+        const piecesFiltrees = pieces.filter(function(piece) {
+            return piece.prix <= 35;
+        });
+        console.log(piecesFiltrees)
+    });
+
+    //ajout des boutons de l'exo
+    const boutonTrier2 = document.querySelector(".btn-trier-2");
+    boutonTrier2.addEventListener("click", function () {
+        const piecesDesordonnees = Array.from(pieces);
+        piecesDesordonnees.sort(function (a, b) {
+            return b.prix - a.prix;
+        });
+        console.log(piecesDesordonnees);
+    });
+
+    const boutonFiltrer2 = document.querySelector(".btn-filtrer-2");
+    boutonFiltrer2.addEventListener("click", function () {
+        const piecesDescription = pieces.filter(function(piece) {
+            return piece.description
+        });
+        console.log(piecesDescription)
+    });
