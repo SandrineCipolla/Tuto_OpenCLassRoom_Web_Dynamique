@@ -13,7 +13,7 @@
         "nom": "Plaquettes de frein (x4)",
         "prix": 40,
         "categorie": "Freinage",
-        "image": "images/aplaquette-frein.png",
+        "image": "images/plaquettes-frein.png",
         "description": "Une qualité de freinage optimale, par tous les temps.",
         "disponibilité": true
     },
@@ -22,7 +22,7 @@
         "nom": "Ampoule boîte à gants",
         "prix": 5.49,
         "categorie": "Optiques",
-        "image": "images/ampoule-lboite-a-gants.png",
+        "image": "images/ampoule-boite-a-gants.png",
         "description": "Pour y voir clair dans l habitacle.",
         "disponibilité": false
     },
