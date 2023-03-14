@@ -1,3 +1,5 @@
+import { ajoutListenersAvis } from "./avis.js";
+
 // Récupération des pièces depuis le fichier JSON
 const reponse = await fetch('pieces-autos.json');
 const pieces = await reponse.json();
@@ -32,6 +34,10 @@ function genererPieces(pieces){
         const disponibilitéElement = document.createElement("p");
         disponibilitéElement.innerText = `Disponibilité:${article.disponibilité ? " En stock" : "Rupture de stock"}`;
 
+        const avisBouton = document.createElement("button");
+        avisBouton.dataset.id = article.id;
+        avisBouton.textContent = "Afficher les avis";
+
         // On rattache la balise article à la section Fiches
         sectionFiches.appendChild(pieceElement);
         // On rattache l’image à pieceElement (la balise article)
@@ -44,8 +50,12 @@ function genererPieces(pieces){
         //Ajout des éléments au DOM pour l'exercice
         pieceElement.appendChild(descriptionElement);
         pieceElement.appendChild(disponibilitéElement);
-        }
+        pieceElement.appendChild(avisBouton);
+
     }
+         // Ajout de la fonction ajoutListenersAvis
+     ajoutListenersAvis();
+}
     genererPieces(pieces);
 
      //gestion des boutons 
