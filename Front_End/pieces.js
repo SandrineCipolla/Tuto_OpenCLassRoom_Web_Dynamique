@@ -1,8 +1,11 @@
-import { ajoutListenersAvis } from "./avis.js";
+import { ajoutListenersAvis,ajoutListenerEnvoyerAvis } from "./avis.js";
 
 // Récupération des pièces depuis le fichier JSON
-const reponse = await fetch('pieces-autos.json');
+const reponse = await fetch('http://localhost:8081/pieces/');
 const pieces = await reponse.json();
+
+ // on appelle la fonction pour ajouter le listener au formulaire
+ ajoutListenerEnvoyerAvis()
 
 function genererPieces(pieces){
     for (let i = 0; i < pieces.length; i++) {
@@ -43,7 +46,6 @@ function genererPieces(pieces){
         // On rattache l’image à pieceElement (la balise article)
         pieceElement.appendChild(imageElement);
         // Idem pour le nom, le prix et la catégorie...
-        pieceElement.appendChild(imageElement);
         pieceElement.appendChild(nomElement);
         pieceElement.appendChild(prixElement);
         pieceElement.appendChild(categorieElement);
@@ -53,10 +55,10 @@ function genererPieces(pieces){
         pieceElement.appendChild(avisBouton);
 
     }
-         // Ajout de la fonction ajoutListenersAvis
-     ajoutListenersAvis();
+// Ajout de la fonction ajoutListenersAvis
+ajoutListenersAvis();
 }
-    genererPieces(pieces);
+genererPieces(pieces);
 
      //gestion des boutons 
     const boutonTrier = document.querySelector(".btn-trier");
@@ -106,7 +108,6 @@ function genererPieces(pieces){
             noms.splice(i,1);
         }
     }
-
     console.log(noms)
 
     //Creation en-tête
@@ -160,3 +161,5 @@ inputPrixMax.addEventListener('input', function(){
     document.querySelector(".fiches").innerHTML = "";
     genererPieces(piecesFiltrees);  
 })
+
+ 
